@@ -14,11 +14,11 @@ export default function Home() {
         </p>
 
         <div className="mt-6 flex gap-4">
-          <a href="/contact" className="bg-black text-white px-6 py-3 rounded-md">
-            Contact me
-          </a>
           <a href="/about" className="bg-black text-white px-6 py-3 rounded-md">
             About me
+          </a>
+          <a href="/contact" className="bg-black text-white px-6 py-3 rounded-md">
+            Contact me
           </a>
         </div>
       </section>
