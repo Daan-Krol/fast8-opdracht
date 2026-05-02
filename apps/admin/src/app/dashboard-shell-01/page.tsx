@@ -1,3 +1,5 @@
+"use client";
+
 import AppSidebar from "@/components/shadcn-space/blocks/dashboard-shell-01/app-sidebar";
 import StatisticsBlock from "@/components/shadcn-space/blocks/dashboard-shell-01/statistics";
 import SalesOverviewChart from "@/components/shadcn-space/blocks/dashboard-shell-01/sales-overview-chart";
