@@ -16,6 +16,7 @@ type Product = {
   dateAdded: Date;
 };
 
+
 export default function Dashboard() {
     //mock data
   const [users, setUsers] = useState<User[]>([
@@ -46,7 +47,12 @@ export default function Dashboard() {
   function deleteUser(id: number) {
     setUsers(users.filter((u) => u.id !== id));
   }
-
+  
+  function changeUser(id: number) {
+    const newName = prompt("Enter new name");
+    if (!newName) return;
+    setUsers(users.map((u) => u.id === id ? { ...u, name: newName } : u));
+  }
 
   function addProduct() {
     if (!newProduct) return;
@@ -94,12 +100,21 @@ export default function Dashboard() {
                 {users.map((user) => (
                 <div key={user.id} className="flex justify-between border p-2 rounded">
                     <span>{user.name}</span>
-                    <Button
-                    variant="destructive"
-                    onClick={() => deleteUser(user.id)}
-                    >
-                    Delete
-                    </Button>
+                    <div className="flex gap-2">
+                        <Button 
+                        variant="outline"
+                        onClick={() => changeUser(user.id)}
+                        >
+                        Edit
+                        </Button>
+
+                        <Button
+                        variant="destructive"
+                        onClick={() => deleteUser(user.id)}
+                        >
+                        Delete
+                        </Button>
+                    </div>
                 </div>
                 ))}
             </div>
@@ -126,8 +141,10 @@ export default function Dashboard() {
             <div className="space-y-2">
                 {products.map((product) => (
                 <div key={product.id} className="flex justify-between border p-2 rounded">
-                    <span>{product.name}</span>
-                    <span>${product.price.toFixed(2)}</span>
+                    <div className="flex gap-2">
+                        <span>{product.name}</span>
+                        <span>${product.price.toFixed(2)}</span>
+                    </div>
                     <Button
                     variant="destructive"
                     onClick={() => deleteProduct(product.id)}
@@ -170,6 +187,7 @@ export default function Dashboard() {
                 ))}
             </div>
         </div>
+        
         </div>
         <p className="text-center text-sm text-gray-500">
             I made a simple dashboard with CRUD operations for Fast8
